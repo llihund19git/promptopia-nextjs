@@ -2,7 +2,6 @@ import Prompt from "@models/prompt";
 import { connectToDB } from "@utils/database";
 
 export const GET = async (request, { params }) => {
-
     try {
         await connectToDB();
 
@@ -37,10 +36,9 @@ export const PATCH = async (request, { params }) => {
 }
 
 export const DELETE = async (request, { params }) => {
-
     try {
         await connectToDB();
-
+        console.log(params.id);
         await Prompt.findByIdAndRemove(params.id);
 
         return new Response(JSON.stringify("Prompt deleted successfully", { status: 200 }));
